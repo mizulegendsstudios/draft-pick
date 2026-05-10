@@ -931,5 +931,3 @@ searchInput.addEventListener('input', (e) => {
 function currentTeam() {
     return draftTurns[currentTurnIndex]?.team || 'blue';
 }
-
-// Nota: la instanciación del fondo y la llamada a init() ahora están en nexo.js

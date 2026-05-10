@@ -1,57 +1,68 @@
 # Draft Championship
 
-Una aplicación web interactiva para simular drafts de campeones en juegos de estrategia como Dota 2. Permite gestionar equipos azul y rojo con fases de bans y picks, temporizadores y un sistema de búsqueda y filtrado de campeones.
+Aplicación web interactiva para simular drafts de campeones al estilo de juegos de estrategia (LoL, Dota 2). Incluye fases de bans y picks, temporizadores por equipo, búsqueda, filtros, intercambio de picks y un fondo animado con matiz dinámico por turno.
 
-## Características
+## ✨ Características principales
 
-- **Equipos Azul y Rojo**: Gestiona dos equipos con logos y nombres personalizables
-- **Fases de Draft**: Alterna entre fases de bans y picks con indicadores visuales
-- **Temporizadores**: Contadores de tiempo independientes para cada equipo
-- **Búsqueda y Filtrado**: Busca campeones por nombre y filtra por roles (Tank, Carry, Support, Mage, Assassin)
-- **Interfaz Fantasía**: Diseño con tema de fantasía medieval con efectos visuales
-- **Historial**: Guarda y visualiza el historial de drafts anteriores
-- **Modo Intercambio**: Permite intercambiar picks entre equipos
-- **Responsive**: Adaptable a diferentes tamaños de pantalla
+- **Equipos Azul y Rojo** con identidad visual y slots ordenados (Top → Jungla → Mid → ADC → Support).
+- **Fases de draft realista**: 20 turnos predefinidos (6 bans iniciales, picks, bans finales, últimos picks).
+- **Fondo animado de malla de degradados** que cambia sutilmente de color según el turno (azul/rojo) y se mantiene en movimiento permanente.
+- **Efecto Glass en paneles**: todos los contenedores usan `backdrop-filter` con blur para un look moderno y dejar ver el fondo animado.
+- **Temporizadores independientes** para cada equipo, con indicador visual activo.
+- **Búsqueda y filtrado** por nombre y rol (Tank, Carry, Support, Mage, Assassin).
+- **Historial de drafts** guardado automáticamente en `localStorage` (últimos 20). Se puede alternar entre ver picks y bans.
+- **Modo intercambio** post‑draft para reordenar campeones dentro de un equipo.
+- **Botones flotantes** con tooltips para reiniciar, guardar/ver historial.
 
-## Cómo Usar
-
-1. Abre el archivo `index.html` en tu navegador web
-2. La aplicación comenzará automáticamente en la fase de bans para el equipo azul
-3. Usa la barra de búsqueda para encontrar campeones específicos
-4. Filtra por roles usando los botones de filtro
-5. Haz clic en un campeón para banearlo o pickearlo según la fase actual
-6. Los temporizadores se activarán automáticamente durante los turnos
-7. Usa los botones flotantes para reiniciar, ver historial o guardar drafts
-
-## Tecnologías
-
-- **HTML5**: Estructura de la aplicación
-- **CSS3**: Estilos y animaciones con tema de fantasía
-- **JavaScript**: Lógica de la aplicación y gestión de estado
-
-## Estructura del Proyecto
+## 📁 Estructura del proyecto
 
 ```
-draft-pick/
-├── index.html          # Archivo principal con HTML, CSS y JS
-├── LICENSE             # Licencia AGPL-3.0
-└── README.md           # Este archivo
+draft-championship/
+├── index.html      # Estructura HTML principal (solo markup)
+├── styles.css      # Estilos completos: tema fantasía, glass, animaciones
+├── main.js         # Lógica de la app: datos, draft, timer, historial, fondo animado
+├── nexo.js         # Puente: carga main.js y arranca la aplicación
+├── LICENSE
+└── README.md
 ```
 
-## Licencia
+- **`index.html`** – Solo contiene el markup de la interfaz. No incluye estilos ni scripts embebidos.
+- **`styles.css`** – Todos los estilos: variables CSS, tema de fantasía, efecto vidrio (backdrop-filter), animaciones.
+- **`main.js`** – Clase `GradientMeshBackground` (fondo animado con matiz), datos de campeones, lógica de draft, temporizadores, historial, swaps.
+- **`nexo.js`** – Carga dinámicamente `main.js` e inicializa la aplicación cuando el DOM está listo. Ideal para agregar futuros scripts sin tocar el HTML.
 
-Este proyecto está bajo la Licencia GNU Affero General Public License v3.0. Ver el archivo [LICENSE](LICENSE) para más detalles.
+## 🚀 Cómo usar
 
-## Contribuir
+1. Clona o descarga el repositorio.
+2. Abre `index.html` en un navegador moderno (Chrome, Edge, Firefox).
+3. La aplicación empezará en la **fase de bans** (turno azul).
+4. **Busca** campeones por nombre o **filtra** por rol.
+5. Haz clic en un campeón para banearlo o seleccionarlo según la fase actual.
+6. Los temporizadores se inician automáticamente; el fondo cambiará de tonalidad con cada turno.
+7. Al finalizar los 20 turnos, entra en **modo intercambio** (swap): haz clic en dos slots del mismo equipo para intercambiarlos.
+8. Usa los botones flotantes 💾 para guardar el draft en el historial, 🔄 para reiniciar, o 📜 para ver drafts anteriores.
 
-Si deseas contribuir al proyecto:
+## 🛠️ Tecnologías
 
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
-3. Commit tus cambios (`git commit -am 'Agrega nueva funcionalidad'`)
-4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un Pull Request
+- **HTML5**
+- **CSS3** (variables, backdrop-filter, grid, flexbox, animaciones keyframes)
+- **JavaScript (ES6+)** – sin dependencias externas
+- **Canvas API** – para el fondo animado de malla de degradados
+- **localStorage** – para persistencia del historial
 
-## Soporte
+## 📜 Licencia
 
-Para soporte o preguntas, por favor abre un issue en el repositorio.
+Este proyecto está bajo la Licencia **GNU Affero General Public License v3.0**.  
+Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## 🤝 Contribuir
+
+1. Haz un fork del repositorio.
+2. Crea una rama para tu funcionalidad (`git checkout -b feature/nueva-idea`).
+3. Realiza tus cambios y haz commit (`git commit -am 'Añade nueva funcionalidad'`).
+4. Haz push a la rama (`git push origin feature/nueva-idea`).
+5. Abre un Pull Request.
+
+## 📧 Soporte
+
+¿Encontraste un bug o tienes una sugerencia? Abre un issue en el repositorio.
